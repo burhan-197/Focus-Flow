@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- FIX: Font Awesome 6 (not 7 which doesn't exist yet — was causing icons to not load) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <title>Focus Tracker</title>
+</head>
+
+<body>
+    <button class="btn" id="logout">Logout</button>
+    <p id="message"></p>
+
+    <main>
+        <h1 class="heading">Focus On <span>Today</span></h1>
+
+        <div class="container">
+            <div class="sub-content">
+                <h2 class="day-heading">Today</h2>
+                <div class="sun-icon-container">
+                    <img src="./img/front.svg" alt="Sun rays" class="sun-icon-front">
+                    <img src="./img/face.svg" alt="Sun face" class="sun-icon-face">
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
+                <button id="createTaskBtn" class="create-btn">+ Create a Task</button>
+            </div>
+
+            <div id="tasksContainer"></div>
+
+            <!-- FIX: summary section added for weekly / monthly stats -->
+            <div class="summary-section">
+                <h3 class="summary-heading">Your Progress</h3>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <span class="summary-label">This Week</span>
+                        <span id="summary-week" class="summary-value">0s</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">This Month</span>
+                        <span id="summary-month" class="summary-value">0s</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">All Time</span>
+                        <span id="summary-total" class="summary-value">0s</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="foot">"Move one step ahead, today!"</p>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+
+</html>

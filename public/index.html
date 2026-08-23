@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <div class="container">
+        <section class="login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Password">
+                    <img class="eye-icons" src="./eye-icons/eye-close.png" alt="">
+                </div>
+                <button type="submit" class="submitBtn">Login</button>
+                <div id="message"></div>
+            </form>
+        </section>
+        <p class="switch">Don't have an account? <span class="btn">Register Now</span></p>
+        <section class="register">
+            <h2>Register</h2>
+            <form id="regForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Username">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" placeholder="Email">
+                <label for="regPassword">Password</label>
+                <div class="password-container">
+                    <input type="password" id="regPassword" placeholder="Password">
+                    <img class="eye-icons" src="./eye-icons/eye-close.png" alt="">
+                </div>
+                <button type="submit" class="submitBtn">Register</button>
+                <div id="message2"></div>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(72, 163, 0, 0.07);
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    margin: 0 15px;
+    padding-bottom: 32px;
+}
+
+.heading {
+    font-size: 4rem;
+    color: #48A300;
+    text-align: center;
+}
+
+.heading span {
+    color: #61481c;
+}
+
+.container {
+    background-color: rgba(251, 251, 251, 1);
+    padding: 32px 45px;
+    max-width: 660px;
+    margin-inline: auto;
+    border-radius: 15px;
+}
+
+.sub-content {
+    display: flex;
+    align-items: center;
+}
+
+.day-heading {
+    font-size: 1.2rem;
+}
+
+.sun-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.sun-icon-front {
+    display: block;
+    height: 40px;
+    width: 40px;
+    animation: rotate 2s linear infinite;
+}
+
+.sun-icon-face {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ── Task card ─────────────────────────────────────────────────────────── */
+
+.goal-section {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 22px;
+    margin: 20px 0;
+    gap: 10px;
+    transition: box-shadow 0.2s;
+}
+
+.goal-section:hover {
+    box-shadow: 0 4px 16px rgba(72, 163, 0, 0.1);
+}
+
+/* ── Task top row: checkbox + input + action icons ──────────────────────── */
+
+.task-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.check-box {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2px solid rgba(97, 72, 28, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.goal-input {
+    border: none;
+    color: black;
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+    outline: none;
+    background: transparent;
+}
+
+.goal-input::placeholder {
+    color: rgba(200, 200, 200, 1);
+    font-weight: 400;
+}
+
+.goal-input[readonly] {
+    color: #333;
+    cursor: default;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.task-actions i {
+    font-size: 13px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.task-actions i:hover {
+    color: #61481c;
+}
+
+.task-actions .fa-trash-can:hover {
+    color: #e05252;
+}
+
+/* ── Goal input row (total time goal) ───────────────────────────────────── */
+
+.goal-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.goal-label {
+    font-size: 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.goal-hours-input {
+    width: 80px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.2s;
+}
+
+.goal-hours-input:focus {
+    border-color: #48A300;
+}
+
+.goal-hours-input::-webkit-inner-spin-button,
+.goal-hours-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.goal-hours-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.goal-progress-text {
+    font-size: 12px;
+    color: #48A300;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+/* ── Streak badge ───────────────────────────────────────────────────────── */
+
+/* Base state – grey pill, shown when daily goal is set but streak = 0 */
+.streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.05);
+    color: #bbb;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.15s;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+/* Active state – orange flame when streak >= 1 */
+.streak-badge.active {
+    background: rgba(224, 96, 0, 0.1);
+    color: #cc5500;
+    border-color: rgba(224, 96, 0, 0.25);
+}
+
+.streak-badge.active i {
+    color: #e06000;
+}
+
+/* Hidden – when no daily goal is set */
+.streak-badge.hidden {
+    display: none;
+}
+
+.streak-count {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Daily goal row ─────────────────────────────────────────────────────── */
+
+/* Mirrors the layout of .goal-row but carries the orange fire-theme */
+.daily-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* The "Daily (hrs)" number input – same dimensions as goal-hours-input */
+.daily-hours-input {
+    width: 80px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.2s;
+}
+
+.daily-hours-input:focus {
+    border-color: #e06000;
+}
+
+/* Hide spinner arrows */
+.daily-hours-input::-webkit-inner-spin-button,
+.daily-hours-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.daily-hours-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* "45m / 1h today" – shown in orange to distinguish from green total-goal */
+.daily-progress-text {
+    font-size: 12px;
+    color: #cc6600;
+    font-weight: 500;
+}
+
+
+
+/* ── Timer row ──────────────────────────────────────────────────────────── */
+
+.timer-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.timer-row i {
+    font-size: 13px;
+    color: #61481c;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.timer-row i:hover {
+    color: #48A300;
+}
+
+.timer-display {
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #61481c;
+    letter-spacing: 0.5px;
+}
+
+.total-label {
+    font-size: 12px;
+    color: #aaa;
+    margin-left: auto;
+}
+
+.total-label strong {
+    color: #48A300;
+}
+
+/* ── Completed state ────────────────────────────────────────────────────── */
+
+.completed .check-box {
+    background-color: #48A300;
+    border-color: #48A300;
+}
+
+.check-icon {
+    display: none;
+}
+
+.completed .check-icon {
+    display: block;
+    width: 12px;
+    height: 12px;
+}
+
+.completed .goal-input {
+    color: #48A300;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+/* ── Summary section ────────────────────────────────────────────────────── */
+
+.summary-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.summary-heading {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #61481c;
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    background: rgba(72, 163, 0, 0.06);
+    border: 1px solid rgba(72, 163, 0, 0.15);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 120px;
+    flex: 1;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #48A300;
+}
+
+/* ── Misc ───────────────────────────────────────────────────────────────── */
+
+.foot {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #FFFFFF;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-btn {
+    padding: 10px 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #48A300;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.create-btn:hover {
+    background-color: #3a8a00;
+}
+
+.create-btn:active {
+    transform: scale(0.97);
+}
+
+#message {
+    text-align: center;
+    font-size: 20px;
+    color: #48A300;
+    font-weight: 500;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 15px 20px;
+    }
+
+    .goal-section {
+        padding: 10px 15px;
+        gap: 8px;
+        margin: 14px 0;
+    }
+
+    .check-box {
+        height: 20px;
+        width: 20px;
+        min-width: 20px;
+    }
+
+    .timer-row {
+        padding-top: 6px;
+        gap: 8px;
+    }
+
+    .timer-display {
+        font-size: 12px;
+    }
+
+    .summary-cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

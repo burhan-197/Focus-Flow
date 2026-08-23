@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #2d2d2d;
+    background: #eef4e3;
+}
+
+.register {
+    display: block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container section {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border: 1px solid #d4e6b5;
+}
+
+.container section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container section form input {
+    border: 1px solid #d4e6b5;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background: #f7faf0;
+    color: #2d2d2d;
+}
+
+.container section form button {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: #5a9e28;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.container section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3a6b18;
+}
+
+.container .btn {
+    cursor: pointer;
+    color: #5a9e28;
+}
+
+.container .register {
+    display: none;
+}
+
+#logout {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: #5a9e28;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.password-container {
+    position: relative;
+}
+
+.eye-icons {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: #3a6b18;
+    margin: 20px 0;
+}
+
+.switch {
+    color: #555;
+    margin: 15px 0;
+}
+
+#message,
+#message2 {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
